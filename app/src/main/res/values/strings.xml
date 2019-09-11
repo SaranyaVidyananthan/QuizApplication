@@ -1,0 +1,18 @@
+<resources>
+    <string name="true_answer">True</string>
+    <string name="false_answer">False</string>
+    <string name="next">Next</string>
+
+    <string name="structs_questionone"></string>
+    <string name="structs_questiontwo"></string>
+    <string name="structs_questionthree"></string>
+    <string name="structs_questionfour"></string>
+    <string name="structs_questionfive"></string>
+    <string name="structs_questionsix"></string>
+    <string name="structs_questionseven"></string>
+    <string name="structs_questioneight"></string>
+    <string name="structs_questionine"></string>
+    <string name="structs_questionten"></string>
+
+
+</resources>
