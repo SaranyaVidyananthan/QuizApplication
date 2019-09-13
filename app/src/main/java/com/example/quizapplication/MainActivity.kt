@@ -11,42 +11,36 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    var indexOfQuestions = 0
-    var questionList = mutableListOf<TrueFalseQuestion>(
-        TrueFalseQuestion("a", true),
-        TrueFalseQuestion("b", false)
+    private var indexOfQuestions = 0
+    private var questionList = mutableListOf<TrueFalseQuestion>(
+        TrueFalseQuestion("a", "explanation",true),
+        TrueFalseQuestion("b", "explanation",false)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main)
+        setContentView(R.layout.true_false)
 
         var questionText: TextView = findViewById(R.id.question_tf)
         var setQuestion: String = questionList[indexOfQuestions].question
         questionText.text = setQuestion
 
         var trueButton: Button = findViewById(R.id.true_button)
-        trueButton.setOnClickListener(View.OnClickListener {
-            fun onClick(view: View) {
-                checkAnswer(true)
-            }
-        })
+        trueButton.setOnClickListener {
+            checkAnswer(true)
+        }
 
         var falseButton: Button = findViewById(R.id.false_button)
-        falseButton.setOnClickListener(View.OnClickListener {
-            fun onClick(view: View) {
-                checkAnswer(false)
-            }
-        })
+        falseButton.setOnClickListener {
+            checkAnswer(false)
+        }
 
         var nextButton: Button = findViewById(R.id.next_button)
-        nextButton.setOnClickListener(View.OnClickListener {
-            fun onClick(view: View) {
-                indexOfQuestions++
-                setQuestion = questionList[indexOfQuestions].question
-                questionText.text = setQuestion
-            }
-        })
+        nextButton.setOnClickListener {
+            indexOfQuestions++
+            setQuestion = questionList[indexOfQuestions].question
+            questionText.text = setQuestion
+        }
     }
 
     fun checkAnswer(isAnswer: Boolean) {
