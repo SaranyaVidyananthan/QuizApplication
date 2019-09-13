@@ -5,6 +5,7 @@
     <string name="true_answer">True</string>
     <string name="false_answer">False</string>
     <string name="next">Next</string>
+    <string name="enter_answer_here">Enter your answer here</string>
 
     <string name="structs_questionone">Question One</string>
     <string name="structs_questiontwo">Question Two</string>
