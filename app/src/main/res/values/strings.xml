@@ -1,23 +1,24 @@
 <resources>
 
     <string name="app_name">QuizApplication</string>
+
     <string name="true_answer">True</string>
     <string name="false_answer">False</string>
     <string name="next">Next</string>
 
-    <string name="structs_questionone">Question one</string>
-    <string name="structs_questiontwo"></string>
-    <string name="structs_questionthree"></string>
-    <string name="structs_questionfour"></string>
-    <string name="structs_questionfive"></string>
-    <string name="structs_questionsix"></string>
-    <string name="structs_questionseven"></string>
-    <string name="structs_questioneight"></string>
-    <string name="structs_questionnine"></string>
-    <string name="structs_questionten"></string>
+    <string name="structs_questionone">Question One</string>
+    <string name="structs_questiontwo">Question Two</string>
+    <string name="structs_questionthree">Question Three</string>
+    <string name="structs_questionfour">Question Four</string>
+    <string name="structs_questionfive">Question Five</string>
+    <string name="structs_questionsix">Question Six</string>
+    <string name="structs_questionseven">Question Seven</string>
+    <string name="structs_questioneight">Question Eight</string>
+    <string name="structs_questionnine">Question Nine</string>
+    <string name="structs_questionten">Question Ten</string>
 
     <string name="structs_answerone">Answer one</string>
-
-
+    <string name="structs_answertwo">Answer two</string>
+    <string name="structs_answerthree">Answer three</string>
 
 </resources>
