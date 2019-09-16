@@ -23,9 +23,48 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when {
-            questionList[indexOfQuestions] is TrueFalseQuestion -> {
-                val tfquestion: TrueFalseQuestion? = questionList[indexOfQuestions] as? TrueFalseQuestion
+        setNextQuestion()
+
+        val nextButton: Button = findViewById(R.id.next_button)
+        nextButton.setOnClickListener {
+            indexOfQuestions++
+            if (indexOfQuestions == questionList.size) {
+                questionList.shuffle()
+                indexOfQuestions=0
+            }
+            setNextQuestion()
+        }
+    }
+
+    // checks if the user's answer for a true and false question is correct
+    fun checkAnswer(isAnswer: Boolean) {
+        val currentQuestion: TrueFalseQuestion = questionList[indexOfQuestions] as TrueFalseQuestion
+        val answer = currentQuestion.answer
+        val explanation = currentQuestion.info
+        if (isAnswer == answer) {
+            Toast.makeText(this,"Correct answer!" , Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // checks if the user's answer for a multiple choice question is correct
+    fun checkMCAnswer(userAnswer: String) {
+        val currentQuestion: MultipleChoiceQuestion = questionList[indexOfQuestions] as MultipleChoiceQuestion
+        val answer = currentQuestion.answer
+        val explanation = currentQuestion.info
+        if (userAnswer == answer) {
+            Toast.makeText(this,"Correct answer!" , Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // sets the content view for the next question based on the type of question: true and false, multiple choice,
+    // or question and answer pair
+    fun setNextQuestion() {
+        when(val currentQuestion: Question = questionList[indexOfQuestions]) {
+            is TrueFalseQuestion -> {
                 setContentView(R.layout.true_false)
 
                 val trueButton: Button = findViewById(R.id.true_button)
@@ -38,67 +77,47 @@ class MainActivity : AppCompatActivity() {
                     checkAnswer(false)
                 }
             }
-            questionList[indexOfQuestions] is MultipleChoiceQuestion -> {
-                val mcquestion: MultipleChoiceQuestion? = questionList[indexOfQuestions] as? MultipleChoiceQuestion
+            is MultipleChoiceQuestion -> {
                 setContentView(R.layout.multiple_choice)
 
-                val choiceone: TextView = findViewById(R.id.answer1)
-                var setchoice: String? = mcquestion?.choice1
-                choiceone.text = setchoice
+                val choiceOne: TextView = findViewById(R.id.answer1)
+                var setChoice: String = currentQuestion.choice1
+                choiceOne.text = setChoice
 
-                val choicetwo: TextView = findViewById(R.id.answer2)
-                setchoice = mcquestion?.choice2
-                choicetwo.text = setchoice
+                val choiceTwo: TextView = findViewById(R.id.answer2)
+                setChoice = currentQuestion.choice2
+                choiceTwo.text = setChoice
 
-                val choicethree: TextView = findViewById(R.id.answer3)
-                setchoice = mcquestion?.choice3
-                choicethree.text = setchoice
+                val choiceThree: TextView = findViewById(R.id.answer3)
+                setChoice = currentQuestion.choice3
+                choiceThree.text = setChoice
 
-                val choicefour: TextView = findViewById(R.id.answer4)
-                setchoice = mcquestion?.choice4
-                choicefour.text = setchoice
+                val choiceFour: TextView = findViewById(R.id.answer4)
+                setChoice = currentQuestion.choice4
+                choiceFour.text = setChoice
+
+                choiceOne.setOnClickListener {
+                    checkMCAnswer(currentQuestion.choice1)
+                }
+
+                choiceTwo.setOnClickListener {
+                    checkMCAnswer(currentQuestion.choice2)
+                }
+
+                choiceThree.setOnClickListener {
+                    checkMCAnswer(currentQuestion.choice3)
+                }
+
+                choiceFour.setOnClickListener {
+                    checkMCAnswer(currentQuestion.choice4)
+                }
             }
-            else -> {
-                val qaquestion: QuestionAnswer? = questionList[indexOfQuestions] as? QuestionAnswer
+            is QuestionAnswer -> {
                 setContentView(R.layout.question_answer)
             }
         }
-
         val questionText: TextView = findViewById(R.id.question)
-        var setQuestion: String = questionList[indexOfQuestions].question
+        val setQuestion: String = questionList[indexOfQuestions].question
         questionText.text = setQuestion
-
-        val nextButton: Button = findViewById(R.id.next_button)
-        nextButton.setOnClickListener {
-            indexOfQuestions++
-            setQuestion = questionList[indexOfQuestions].question
-            questionText.text = setQuestion
-        }
     }
-
-    fun checkAnswer(isAnswer: Boolean) {
-        val answer = questionList[indexOfQuestions].answer
-        var explanation = questionList[indexOfQuestions].info
-        if (isAnswer == answer) {
-            Toast.makeText(this,"Correct answer!" , Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    /*  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-          // Inflate the menu; this adds items to the action bar if it is present.
-          menuInflater.inflate(R.menu.menu_main, menu)
-          return true
-      }
-
-      override fun onOptionsItemSelected(item: MenuItem): Boolean {
-          // Handle action bar item clicks here. The action bar will
-          // automatically handle clicks on the Home/Up button, so long
-          // as you specify a parent activity in AndroidManifest.xml.
-          return when (item.itemId) {
-              R.id.action_settings -> true
-              else -> super.onOptionsItemSelected(item)
-          }
-      }*/
 }
