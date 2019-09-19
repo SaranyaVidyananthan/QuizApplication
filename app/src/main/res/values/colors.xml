@@ -9,4 +9,5 @@
     <color name="tiger">#fd6a02</color>
     <color name="pumpkin">#ff7417</color>
     <color name="blue">#0000ff</color>
+    <color name="opaque_white">#55ffffff</color>
 </resources>

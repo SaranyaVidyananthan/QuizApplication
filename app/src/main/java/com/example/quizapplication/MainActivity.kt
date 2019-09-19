@@ -2,26 +2,25 @@ package com.example.quizapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.true_false.*
+import androidx.fragment.app.Fragment
+
 
 class MainActivity : AppCompatActivity() {
 
     private var indexOfQuestions = 0
     private var questionList = mutableListOf<Question>(
-        TrueFalseQuestion("Question One", "explanation",true),
-        TrueFalseQuestion("Question Two", "explanation",false),
-        MultipleChoiceQuestion("Question Three", "explanation","1","2","3","4", "answer"),
-        MultipleChoiceQuestion("Question Four", "explanation","1","2","3","4", "answer")
+        MultipleChoiceQuestion("Question Three", "explanation","1","2","3","4", "1"),
+        MultipleChoiceQuestion("Question Four", "explanation","1","2","3","4", "2"),
+        TrueFalseQuestion("Question 1", "explanation",true),
+        TrueFalseQuestion("Question 2", "explanation",false)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.main)
 
         setNextQuestion()
 
@@ -36,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // checks if the user's answer for a true and false question is correct
+ /*   // checks if the user's answer for a true and false question is correct
     fun checkAnswer(isAnswer: Boolean) {
-        val currentQuestion: TrueFalseQuestion = questionList[indexOfQuestions] as TrueFalseQuestion
+        val currentQuestion = questionList[indexOfQuestions] as TrueFalseQuestion
         val answer = currentQuestion.answer
         val explanation = currentQuestion.info
         if (isAnswer == answer) {
@@ -58,29 +57,33 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
         }
-    }
+    }*/
 
     // sets the content view for the next question based on the type of question: true and false, multiple choice,
     // or question and answer pair
     fun setNextQuestion() {
+        val selectedFragment: Fragment;
         when(val currentQuestion: Question = questionList[indexOfQuestions]) {
             is TrueFalseQuestion -> {
-                setContentView(R.layout.true_false)
+                selectedFragment = TrueFalseQuestionFragment(currentQuestion)
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_main, selectedFragment).commit()
 
-                val trueButton: Button = findViewById(R.id.true_button)
-                trueButton.setOnClickListener {
-                    checkAnswer(true)
-                }
 
-                val falseButton: Button = findViewById(R.id.false_button)
-                falseButton.setOnClickListener {
-                    checkAnswer(false)
-                }
+              /*      val trueButton: Button = findViewById(R.id.true_button)
+                    trueButton.setOnClickListener {
+                        checkAnswer(true)
+                    }
+
+                    val falseButton: Button = findViewById(R.id.false_button)
+                    falseButton.setOnClickListener {
+                        checkAnswer(false)
+                    }*/
             }
             is MultipleChoiceQuestion -> {
-                setContentView(R.layout.multiple_choice)
+                selectedFragment = MultipleChoiceQuestionFragment(currentQuestion)
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_main, selectedFragment).commit()
 
-                val choiceOne: TextView = findViewById(R.id.answer1)
+      /*          val choiceOne: TextView = findViewById(R.id.answer1)
                 var setChoice: String = currentQuestion.choice1
                 choiceOne.text = setChoice
 
@@ -110,14 +113,17 @@ class MainActivity : AppCompatActivity() {
 
                 choiceFour.setOnClickListener {
                     checkMCAnswer(currentQuestion.choice4)
-                }
+                }*/
             }
             is QuestionAnswer -> {
-                setContentView(R.layout.question_answer)
+                selectedFragment = QuestionAnswerFragment(currentQuestion)
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_main, selectedFragment).commit()
+
             }
         }
-        val questionText: TextView = findViewById(R.id.question)
+
+      /*  val questionText: TextView = findViewById(R.id.question)
         val setQuestion: String = questionList[indexOfQuestions].question
-        questionText.text = setQuestion
+        questionText.text = setQuestion*/
     }
 }
