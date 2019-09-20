@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-public class QuestionAnswerFragment(private val myquestion: QuestionAnswer): Fragment() {
+public class QuestionAnswerFragment(private val myquestion: QuestionAnswer) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,7 +16,7 @@ public class QuestionAnswerFragment(private val myquestion: QuestionAnswer): Fra
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.question_answer, container, false)
+        val view: View = inflater.inflate(R.layout.question_answer, container, false)
 
         val questionText: TextView = view.findViewById(R.id.question)
         val setQuestion: String = myquestion.question
@@ -30,7 +30,7 @@ public class QuestionAnswerFragment(private val myquestion: QuestionAnswer): Fra
         val answer = myquestion.answer
         val explanation = myquestion.info
         if (isAnswer == answer) {
-            Toast.makeText(activity,"Correct answer!" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
         }

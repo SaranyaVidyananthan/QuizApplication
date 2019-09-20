@@ -8,7 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoiceQuestion): Fragment() {
+public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoiceQuestion) :
+    Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,7 +17,7 @@ public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoi
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view: View =  inflater.inflate(R.layout.multiple_choice, container, false)
+        val view: View = inflater.inflate(R.layout.multiple_choice, container, false)
 
         val questionText: TextView = view.findViewById(R.id.question)
         val setQuestion: String = myquestion.question
@@ -62,7 +63,7 @@ public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoi
         val answer = myquestion.answer
         val explanation = myquestion.info
         if (userAnswer == answer) {
-            Toast.makeText(activity,"Correct answer!" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
         }

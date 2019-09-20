@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion): Fragment() {
+public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +41,7 @@ public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion
         val answer = myquestion.answer
         val explanation = myquestion.info
         if (isAnswer == answer) {
-            Toast.makeText(activity,"Correct answer!" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
         }
