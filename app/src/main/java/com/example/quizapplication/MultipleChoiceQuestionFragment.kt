@@ -66,7 +66,7 @@ public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoi
         if (userAnswer == answer) {
             Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Incorrect. $explanation", Toast.LENGTH_SHORT).show()
         }
     }
 }

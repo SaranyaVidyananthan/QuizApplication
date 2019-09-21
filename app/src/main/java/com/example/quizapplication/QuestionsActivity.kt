@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
 
-class QuestionsActivity() : AppCompatActivity() {
+class QuestionsActivity : AppCompatActivity() {
 
     private var indexOfQuestions = 0
 

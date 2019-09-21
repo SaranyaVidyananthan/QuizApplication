@@ -43,7 +43,7 @@ public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion
         if (isAnswer == answer) {
             Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Incorrect. $explanation", Toast.LENGTH_SHORT).show()
         }
     }
 }

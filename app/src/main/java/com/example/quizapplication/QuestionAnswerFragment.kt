@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import java.util.*
 
 public class QuestionAnswerFragment(private val myquestion: QuestionAnswer) : Fragment() {
 
@@ -22,6 +25,12 @@ public class QuestionAnswerFragment(private val myquestion: QuestionAnswer) : Fr
         val setQuestion: String = myquestion.question
         questionText.text = setQuestion
 
+        val done: Button = view.findViewById(R.id.done_button)
+        done.setOnClickListener {
+            val userAnswer: EditText = view.findViewById(R.id.plain_text_input)
+            val answer: String = userAnswer.text.toString().trim().trimStart('0').toLowerCase(Locale.CANADA)
+            checkAnswer(answer)
+        }
         return view
     }
 
@@ -32,7 +41,7 @@ public class QuestionAnswerFragment(private val myquestion: QuestionAnswer) : Fr
         if (isAnswer == answer) {
             Toast.makeText(activity, "Correct answer!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(activity, "Incorrect.$explanation", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Incorrect. $explanation", Toast.LENGTH_LONG).show()
         }
     }
 }
