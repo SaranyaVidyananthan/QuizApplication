@@ -13,4 +13,5 @@
     <color name="blue">#0000ff</color>
     <color name="opaque_white">#30ffffff</color>
     <color name="opaque">#00ffffff</color>
+    <color name="green">#00FF00</color>
 </resources>
