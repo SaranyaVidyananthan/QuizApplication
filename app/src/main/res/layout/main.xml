@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_button_large"
         android:fontFamily="@font/quicksand"
+        android:textColor="@color/blue"
         android:text="Choose a topic"
         app:layout_constraintBottom_toTopOf="@id/bottom"
         app:layout_constraintLeft_toRightOf="@id/right"

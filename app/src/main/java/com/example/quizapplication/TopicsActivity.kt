@@ -5,13 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-
 class TopicsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.topics)
 
-
+        // the user chose the CS 241 option
         val firstTopic: Button = findViewById(R.id.CS241)
         firstTopic.setOnClickListener {
             val questionList = ArrayList<Question>()
@@ -33,6 +32,7 @@ class TopicsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // the user chose the CS 246 topic
         val secondTopic: Button = findViewById(R.id.CS246)
         secondTopic.setOnClickListener {
             val questionList = ArrayList<Question>()
@@ -55,6 +55,7 @@ class TopicsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // user chose the CS 240 topic
         val thirdTopic: Button = findViewById(R.id.CS240)
         thirdTopic.setOnClickListener {
             val questionList = ArrayList<Question>()
