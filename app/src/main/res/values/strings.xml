@@ -11,15 +11,9 @@
     <string name="structs_questiontwo">Question Two</string>
     <string name="structs_questionthree">Question Three</string>
     <string name="structs_questionfour">Question Four</string>
-    <string name="structs_questionfive">Question Five</string>
-    <string name="structs_questionsix">Question Six</string>
-    <string name="structs_questionseven">Question Seven</string>
-    <string name="structs_questioneight">Question Eight</string>
-    <string name="structs_questionnine">Question Nine</string>
-    <string name="structs_questionten">Question Ten</string>
 
-    <string name="structs_answerone">Answer one</string>
-    <string name="structs_answertwo">Answer two</string>
-    <string name="structs_answerthree">Answer three</string>
+    <string name="Sequential_Programming">Foundations of Sequential Programming</string>
+    <string name="Data_Structures_and_Data_Management">Data Structures and Data Management</string>
+    <string name="Object_Oriented_Software_Development">Object-Oriented Software Development</string>
 
 </resources>

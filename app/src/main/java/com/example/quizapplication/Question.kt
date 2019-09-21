@@ -1,3 +1,5 @@
 package com.example.quizapplication
 
-open class Question(val question: String,  var info: String)
+import java.io.Serializable
+
+open class Question(val question: String,  var info: String): Serializable

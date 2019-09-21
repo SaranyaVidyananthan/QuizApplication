@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.quizapplication.TopicsActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.quizapplication.QuestionsActivity"
+            android:label="@string/app_name" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
