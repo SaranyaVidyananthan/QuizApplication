@@ -3,8 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.quizapplication.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/CS241"
         android:orderInCategory="100"
-        android:title="@string/next"
+        android:title="Foundations of Sequential Programming"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/CS240"
+        android:orderInCategory="100"
+        android:title="Data Structures and Data Management"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/CPlusPlus"
+        android:orderInCategory="100"
+        android:title="Object-Oriented Software Development"
         app:showAsAction="never" />
 </menu>

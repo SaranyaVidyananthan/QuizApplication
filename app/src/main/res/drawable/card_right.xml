@@ -5,7 +5,7 @@
             android:fromDegrees="25"
             android:toDegrees="25"
             android:pivotX="40%"
-            android:pivotY="%"
+            android:pivotY="0%"
             android:drawable="@drawable/card"/>
     </item>
 </selector>

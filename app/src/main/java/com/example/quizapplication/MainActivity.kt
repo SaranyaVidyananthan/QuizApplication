@@ -3,6 +3,7 @@ package com.example.quizapplication
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
 
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
                 indexOfQuestions = 0
             }
             setNextQuestion()
+        }
+
+        val close: ImageButton = findViewById(R.id.cancel_button)
+        close.setOnClickListener {
+            finish()
         }
     }
 
