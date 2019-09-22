@@ -1,16 +1,20 @@
 package com.example.quizapplication
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoiceQuestion) :
     Fragment() {
+
+    var text: TextToSpeech? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,7 +60,30 @@ public class MultipleChoiceQuestionFragment(private val myquestion: MultipleChoi
             checkMCAnswer(myquestion.choice4)
         }
 
+        text = TextToSpeech(this.activity, TextToSpeech.OnInitListener {
+        })
+        val speechButton: ImageButton = view.findViewById(R.id.speech_button)
+        speechButton.setOnClickListener {
+            speak(myquestion.question)
+            speak("a " + myquestion.choice1)
+            speak("b " + myquestion.choice2)
+            speak("c " + myquestion.choice3)
+            speak("d " + myquestion.choice4)
+        }
+
         return view
+    }
+
+    override fun onDestroy() {
+        if (text != null) {
+            text?.stop()
+            text?.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    fun speak(s: CharSequence) {
+        text?.speak(s, TextToSpeech.QUEUE_ADD, null, "")
     }
 
     // checks if the user's answer for a multiple choice question is correct

@@ -1,15 +1,21 @@
 package com.example.quizapplication
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.true_false.*
+import java.util.*
 
-public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion) : Fragment() {
+class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion) : Fragment(), TextToSpeech.OnInitListener {
+
+    var text: TextToSpeech? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,12 +38,37 @@ public class TrueFalseQuestionFragment(private val myquestion: TrueFalseQuestion
             checkAnswer(false)
         }
 
-        return view
+        speech_button.isEnabled = false
 
+        text = TextToSpeech(this.activity, TextToSpeech.OnInitListener {
+        })
+        val speechButton: ImageButton = view.findViewById(R.id.speech_button)
+        speechButton.setOnClickListener {
+            speak(myquestion.question + " Is this true or false?")
+        }
+
+        return view
+    }
+
+    override fun onInit(status: Int) {
+        text?.language = Locale.CANADA
+        speech_button.isEnabled = true
+    }
+
+    override fun onDestroy() {
+        if (text != null) {
+            text?.stop()
+            text?.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    private fun speak(s: CharSequence) {
+        text?.speak(s, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
     // checks if the user's answer for a true and false question is correct
-    fun checkAnswer(isAnswer: Boolean) {
+    private fun checkAnswer(isAnswer: Boolean) {
         val answer = myquestion.answer
         val explanation = myquestion.info
         if (isAnswer == answer) {
